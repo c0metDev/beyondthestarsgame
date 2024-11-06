@@ -1,0 +1,229 @@
+:root {
+    --primary-color: #1e90ff;
+    --secondary-color: #00ff7f;
+    --bg-dark: #0f0c1a;
+    --bg-card: #1e1c35;
+    --text-light: #f8fafc;
+    --wormhole-color: rgba(0, 119, 182, 0.5);
+    --blackhole-color: rgba(139, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-image: url('https://d2pn8kiwq2w21t.cloudfront.net/original_images/main_image_star-forming_region_carina_nircam_final-5mb.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--text-light);
+    line-height: 1.5;
+    padding: 1rem;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.game-layout {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.board-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.game-board {
+    background-color: var(--bg-card);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.board-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+}
+
+.cell {
+    aspect-ratio: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell-number {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.wormhole {
+    background-color: var(--wormhole-color);
+}
+
+.blackhole {
+    background-color: var(--blackhole-color);
+}
+
+.player-token {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    position: absolute;
+    transition: transform 0.3s ease;
+}
+
+.player {
+    background-color: var(--primary-color);
+    transform: translateX(-6px);
+}
+
+.computer {
+    background-color: var(--secondary-color);
+    transform: translateX(6px);
+}
+
+.controls-panel {
+    flex-basis: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card {
+    background-color: var(--bg-card);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.game-info {
+    text-align: center;
+}
+
+.current-player {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.dice-value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.message {
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 0.5rem 0;
+    min-height: 3rem;
+}
+
+.button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-bottom: 0.5rem;
+}
+
+.button-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.button-secondary {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.legend {
+    margin-top: 1rem;
+}
+
+.legend-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.legend-color {
+    width: 1rem;
+    height: 1rem;
+}
+
+.legend-color.player-color {
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+.legend-color.computer-color {
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+}
+
+.legend-color.wormhole-color {
+    background-color: var(--wormhole-color);
+}
+
+.legend-color.blackhole-color {
+    background-color: var(--blackhole-color);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .game-layout {
+        flex-direction: column;
+    }
+
+    .controls-panel {
+        order: -1;
+    }
+}
